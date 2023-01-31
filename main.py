@@ -17,7 +17,7 @@ def create_db(cur):
     """)
     cur.execute("""
     CREATE TABLE IF NOT EXISTS phonenumbers(
-        number BIGINT PRIMARY KEY,
+        number VARCHAR(11) PRIMARY KEY,
         client_id INTEGER REFERENCES clients(id)
         );
     """)
@@ -143,11 +143,11 @@ if __name__ == '__main__':
             print('Add client: ', 
                    add_client(curs, "Евгений", "Фомин", "roro4250522@gmail.com"))
             print('Add client: ', 
-                   add_client(curs, "Роман", "Ефремов", "crepp@gmail.com", 89607304949))
+                   add_client(curs, "Роман", "Ефремов", "crepp@gmail.com", '89607304949'))
             print('Add client: ', 
-                   add_client(curs, "Кирилл", "Сорокин", "asdasdasd@gmail.com", 83245655196))
+                   add_client(curs, "Кирилл", "Сорокин", "asdasdasd@gmail.com", '83245655196'))
             print('Add client: ', 
-                   add_client(curs, "Дмитрий", "Попов", "psdokmjf@gmail.com", 83245675288))
+                   add_client(curs, "Дмитрий", "Попов", "psdokmjf@gmail.com", '83245675288'))
             print('Add client: ', 
                    add_client(curs, "Арам", "Соколов", "lolo123123@gmail.com"))
             print('Add client: ', 
@@ -167,11 +167,11 @@ if __name__ == '__main__':
             pprint(curs.fetchall())
 
             print("Phone add to client id: ",
-                  add_tel(curs, 1, 89877453278))
+                  add_tel(curs, 1, '89877453278'))
             print("Phone add to client id: ",
-                  add_tel(curs, 3, 89625424545))
+                  add_tel(curs, 3, '89625424545'))
             print("Phone add to client id: ",
-                  add_tel(curs, 6, 86305204000))
+                  add_tel(curs, 6, '86305204000'))
             
             print('Data add to DB')
 
@@ -188,7 +188,7 @@ if __name__ == '__main__':
                   update_client(curs, 7, "Иван", None, 'ivan_2050@list.ru'))
             
             print("Delet numder: ",
-                  delete_phone(curs, 89607304949))
+                  delete_phone(curs, '89607304949'))
             
             print("Data Save")
 
@@ -223,10 +223,10 @@ if __name__ == '__main__':
             print(find_client(curs, 'Дмитрий', 'Попов',   'psdokmjf@gmail.com'))
 
             print('Find client by Name, SurName, Phonenumber, email:')
-            print(find_client(curs, 'Илья', 'Круглов','sdfsdf23@gmail.com', 86305204000))
+            print(find_client(curs, 'Илья', 'Круглов','sdfsdf23@gmail.com', '86305204000'))
 
             print('Find client by Name, SurName, Phonenumber:') 
-            print(find_client(curs, None, None, None, 89877453278))
+            print(find_client(curs, None, None, None, '89877453278'))
 
 
 conn.close()
